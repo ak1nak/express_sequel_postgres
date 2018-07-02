@@ -1,0 +1,18 @@
+const app = require('../app');
+const http = require('http');
+const debug = require('debug')('profile-test');
+models = require('../models');
+
+const port = '3000';
+app.set('port', port);
+
+const server = http.createServer(app);
+
+models.sequelize.sync().then(function() {
+  /**
+   * Listen on provided port, on all network interfaces.
+   */
+  server.listen(port, function() {
+    debug('Express server listening on port ' + server.address().port);
+  });
+ });
