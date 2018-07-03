@@ -8,7 +8,7 @@ exports.create = (req, res) => {
       res.status(201).location(req.originalUrl);
     })
     .catch((err) => {
-      res.status(500).send({
+      res.status(500).json({
         message: `Error with ${id} id profile -- ${err}`,
       });
     });
@@ -25,7 +25,7 @@ exports.find = (req, res) => {
       }
     })
     .catch((err) => {
-      res.status(500).send({
+      res.status(500).json({
         message: `Error with ${id} id profile -- ${err}`,
       });
     });
@@ -43,7 +43,7 @@ exports.update = (req, res) => {
           message: `User ${id} id not found`,
         });
       }
-    }).catch(err => res.status(500).send({
+    }).catch(err => res.status(500).json({
       message: `Error with ${id} id profile -- ${err}`,
     }));
 };
@@ -60,7 +60,7 @@ exports.delete = (req, res) => {
           message: `User ${id} id not found`,
         });
       }
-    }).catch(err => res.status(500).send({
+    }).catch(err => res.status(500).json({
       message: `Error with ${id} id profile -- ${err}`,
     }));
 };
